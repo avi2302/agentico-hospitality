@@ -184,7 +184,7 @@ const App = () => {
                 <span className="text-[10px] font-black uppercase text-lime-400 italic">SEO is Legacy. Welcome to AEO.</span>
               </div>
               <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
-                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider">Free Strategy Consultation</span>
+                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase">Free Strategy Consultation</span>
               </div>
             </div>
             
@@ -194,12 +194,12 @@ const App = () => {
             </h1>
             
             <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-12 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
-              Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers buy. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2">map your AEO optimization gaps</span> and deploy the infrastructure for AI agents to book your property directly.
+              Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers buy. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2 text-slate-100">map your AEO optimization gaps</span> and deploy the infrastructure for AI agents to book your property directly.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
-                <span>Book My Free AEO Gap Analysis</span>
+                <span>Claim My Free Strategy Briefing</span>
                 <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
               <div className="flex flex-col space-y-2 text-left">
@@ -207,9 +207,9 @@ const App = () => {
                   <div className="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
                     <div className="w-[57%] h-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
                   </div>
-                  <span className="text-[9px] font-black uppercase text-indigo-400 tracking-widest">4/7 Slots Filled</span>
+                  <span className="text-[9px] font-black uppercase text-indigo-400 tracking-widest leading-none">4/7 Slots Filled</span>
                 </div>
-                <span className="text-[10px] text-zinc-400 italic uppercase tracking-widest text-center lg:text-left">Property Exclusivity protocol active.</span>
+                <span className="text-[10px] text-zinc-400 italic uppercase tracking-widest leading-none">Property Exclusivity protocol active.</span>
               </div>
             </div>
           </div>
@@ -232,7 +232,7 @@ const App = () => {
             ].map((strength, i) => (
               <div key={i} className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 transition-all duration-500 group hover:border-indigo-500/30">
                 <strength.icon className="w-10 h-10 text-indigo-400 mb-6 group-hover:rotate-6 transition-transform" />
-                <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4">{strength.title}</h4>
+                <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4 leading-tight">{strength.title}</h4>
                 <p className="text-zinc-300 text-sm leading-relaxed font-light">{strength.desc}</p>
               </div>
             ))}
@@ -248,12 +248,12 @@ const App = () => {
               <span className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[10px]">Discovery Call Details</span>
               <h2 className="text-4xl lg:text-6xl font-black leading-[0.95] mt-4 mb-8 uppercase italic tracking-tighter">Your Direct <br className="hidden lg:block" /> Revenue <br className="hidden lg:block" /> Blueprint.</h2>
               <p className="text-slate-600 mb-10 font-light text-base sm:text-lg italic leading-relaxed max-w-xl mx-auto lg:mx-0">
-                "We don't do sales pitches. We perform a technical check to see if there is an optimization gap and build the strategy to fix it."
+                "We don't do sales pitches. We perform a technical check to see if there is an optimization gap and build the strategy of how to proceed."
               </p>
               
               <div className="grid gap-8 text-left">
                 {[
-                  { icon: SearchCode, title: "Optimisation Gap Check", text: "We analyze your digital presence to see where AI agents are currently failing to cite your property for direct bookings." },
+                  { icon: SearchCode, title: "Optimisation Gap Check", text: "We analyze your current digital presence to see where AI agents are currently failing to cite your property for direct bookings." },
                   { icon: LineChart, title: "Revenue Mapping", text: "Identifying search intents where you are overpaying 25% commission to OTAs for traffic you should own." },
                   { icon: Target, title: "Strategic Roadmap", text: "A step-by-step plan to anchor your hotel into global Knowledge Graphs for authoritative citation." }
                 ].map((item, i) => (
@@ -262,7 +262,7 @@ const App = () => {
                       <span className="font-black italic text-lg">{i+1}</span>
                     </div>
                     <div>
-                      <h4 className="font-black text-sm sm:text-base uppercase italic tracking-tight mb-1">{item.title}</h4>
+                      <h4 className="font-black text-sm sm:text-base uppercase italic tracking-tight mb-1 leading-tight">{item.title}</h4>
                       <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">{item.text}</p>
                     </div>
                   </div>
@@ -275,14 +275,14 @@ const App = () => {
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
                 <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10">Protect your <br /><span className="text-indigo-400">future margins.</span></h3>
                 <p className="text-zinc-300 text-sm mb-10 font-light italic relative z-10 leading-relaxed">
-                  During this free 30-minute call, we will determine if your tech stack is AEO-ready and map out your path to direct booking dominance.
+                  During this free 30-minute call, we will determine if your tech stack is AEO-ready and provide a roadmap for reclaiming direct revenue.
                 </p>
                 <button 
                   onClick={handleBooking}
                   className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 sm:py-6 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-4 shadow-2xl shadow-indigo-500/30 relative z-10 text-xs sm:text-sm active:scale-95"
                 >
                   <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span>Start My Strategy Briefing</span>
+                  <span>Book My Free Strategy Call</span>
                 </button>
                 <div className="mt-8 flex items-center justify-center space-x-3 text-[9px] sm:text-[10px] text-zinc-400 uppercase font-black relative z-10 tracking-[0.2em]">
                   <UserCheck className="w-4 h-4 text-indigo-400" />
@@ -368,7 +368,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* POST-PRICING CTA SECTION */}
+      {/* FINAL POST-PRICING CTA SECTION */}
       <section className="py-24 sm:py-32 bg-[#020617] relative overflow-hidden border-t border-slate-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-5 py-2 mb-10">
@@ -382,13 +382,13 @@ const App = () => {
           </h2>
           
           <p className="text-lg sm:text-xl text-zinc-200 mb-14 leading-relaxed font-light max-w-2xl mx-auto">
-            Our destination slots fill fast. Don't let OTAs continue capturing your highest-margin search traffic. Book your briefing to secure exclusivity.
+            Our destination slots fill fast. Book a free intro call to see how AI can boost your direct bookings and stop you from paying up to 25% to OTAs. Rebalance your channel booking distribution.
           </p>
 
           <div className="flex flex-col items-center gap-6 px-4">
             <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-8 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
               <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-              <span>Book My Free AEO Gap Analysis</span>
+              <span>Book My Free Strategy Discovery</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </button>
             <div className="flex items-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
