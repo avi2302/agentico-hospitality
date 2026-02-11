@@ -179,10 +179,10 @@ const App = () => {
             {/* Centered Badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
-                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest leading-none">SEO is Legacy. Welcome to AEO.</span>
+                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest leading-none">SEO is Legacy. AEO is a must.</span>
               </div>
               <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
-                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase leading-none">Free Strategy Consultation</span>
+                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase leading-none">Stop paying 18%+ comissions to OTAs</span>
               </div>
             </div>
             
