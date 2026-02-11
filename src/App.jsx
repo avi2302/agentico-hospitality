@@ -171,7 +171,7 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section - FORMATTING FIXED: Centered and Professionally Scaled */}
+      {/* Hero Section - FORMATTING UPDATED: Scaled H1 down for professional look */}
       <section className="relative pt-16 pb-24 lg:pt-32 lg:pb-44 overflow-hidden border-b border-slate-900 text-center">
         <NeuralBackground />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -186,8 +186,8 @@ const App = () => {
               </div>
             </div>
             
-            {/* Header: Centered and Scaled */}
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tighter uppercase italic">
+            {/* Header: Centered and scaled to 5xl (down from 7xl) for professional balance */}
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-8 leading-[1.2] tracking-tight uppercase italic">
               BOOST DIRECT BOOKINGS <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 italic leading-tight">WITH AI ENGINE OPTIMIZATION.</span>
             </h1>
@@ -200,7 +200,7 @@ const App = () => {
             {/* Centered Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
-                <span>Unlock my AI agent visiblity</span>
+                <span>Claim My Free Strategy Briefing</span>
                 <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
               <div className="flex flex-col space-y-2 text-center">
@@ -241,7 +241,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Discovery Call Details Section */}
+      {/* Strategy Briefing (Gap Analysis) Section */}
       <section id="briefing" className="py-20 lg:py-32 bg-white text-[#020617]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
@@ -300,7 +300,7 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
            <div className="order-2 lg:order-1 mx-auto lg:mx-0">
               <div className="bg-slate-900/50 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-800 relative shadow-2xl">
-                 <div className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-8 leading-none">Case Study: Margin Reclaim</div>
+                 <div className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-8 leading-none">Case Study: Vienna, Austria</div>
                  <div className="flex items-center justify-center sm:justify-start space-x-4 mb-8">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-600 rounded-xl sm:rounded-2xl flex items-center justify-center">
                        <Award className="text-white w-5 h-5 sm:w-6 sm:h-6" />
@@ -325,7 +325,7 @@ const App = () => {
            </div>
            <div className="order-1 lg:order-2">
               <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Real-World Proof</span>
-              <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-10 leading-tight uppercase italic tracking-tighter">Infrastructure <br className="hidden lg:block" /> Beats <br className="hidden lg:block" /> Marketing.</h2>
+              <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-10 leading-tight uppercase italic tracking-tighter text-slate-100">Infrastructure <br /> Beats <br /> Marketing.</h2>
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-zinc-200 mx-auto lg:mx-0">
                 <span className="text-xs font-black uppercase tracking-widest text-black italic">Book My Free Strategy Call</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -340,28 +340,28 @@ const App = () => {
           <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Solutions</span>
           <h2 className="text-3xl lg:text-5xl font-bold text-white mt-4 tracking-tighter italic uppercase leading-none text-white">The Framework</h2>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 text-left">
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <BarChart3 className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">Gap Analysis</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
-            <div className="mt-auto flex items-baseline space-x-2 text-left">
+            <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white">$699</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">Fixed Fee</span>
             </div>
           </div>
-          <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group text-left">
+          <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group">
             <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase shadow-lg tracking-widest">Priority</div>
             <Layers className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Entity Anchoring</h3>
             <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light text-left">Building proprietary Hotel Data Entities for authoritative citation across agentic LLMs.</p>
-            <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg text-left">Custom Quote</div>
+            <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg">Custom Quote</div>
           </div>
-          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group text-left">
+          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Active Protocol</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
-            <div className="mt-auto flex items-baseline space-x-2 text-left">
+            <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white">$499</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">/ Month</span>
             </div>
