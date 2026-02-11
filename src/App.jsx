@@ -3,35 +3,31 @@ import {
   Database, 
   ChevronRight, 
   CheckCircle2, 
-  Code2, 
   Bot, 
-  Lock, 
-  Search, 
   Award, 
   Banknote, 
-  Building2, 
   Calendar,
   ArrowRight, 
   BarChart3,
   Layers,
   Activity,
-  Timer,
-  ShieldCheck,
-  Cpu,
   UserCheck,
   Globe,
-  Monitor,
   Landmark,
   Compass,
-  Sparkles,
   Settings,
   MessageSquareText,
-  Zap
+  Zap,
+  Sparkles,
+  ShieldCheck,
+  SearchCode,
+  LineChart,
+  Target
 } from 'lucide-react';
 
 /**
- * AI Inspired Background Animation
- * Renders a neural-network style particle system on a canvas.
+ * AI Particle Background
+ * High-performance, subtle animation for a premium feel.
  */
 const NeuralBackground = () => {
   const canvasRef = useRef(null);
@@ -52,33 +48,28 @@ const NeuralBackground = () => {
     resizeCanvas();
 
     const particles = [];
-    const particleCount = 50;
-    const connectionDistance = 160;
+    const particleCount = 35;
+    const connectionDistance = 140;
 
     class Particle {
       constructor() {
         this.x = Math.random() * (canvas.width || 800);
         this.y = Math.random() * (canvas.height || 600);
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.size = Math.random() * 2.5 + 1;
+        this.vx = (Math.random() - 0.5) * 0.2;
+        this.vy = (Math.random() - 0.5) * 0.2;
+        this.size = Math.random() * 1.5 + 1;
       }
-
       update() {
         this.x += this.vx;
         this.y += this.vy;
-
         if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
       }
-
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(129, 140, 248, 0.4)'; 
+        ctx.fillStyle = 'rgba(129, 140, 248, 0.25)'; 
         ctx.fill();
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgba(129, 140, 248, 0.2)';
       }
     }
 
@@ -89,20 +80,17 @@ const NeuralBackground = () => {
     const animate = () => {
       if (!canvas || !ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
         particles[i].draw();
-
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-
           if (distance < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(129, 140, 248, ${0.3 * (1 - distance / connectionDistance)})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(129, 140, 248, ${0.12 * (1 - distance / connectionDistance)})`;
+            ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -111,34 +99,22 @@ const NeuralBackground = () => {
       }
       animationFrameId = requestAnimationFrame(animate);
     };
-
     animate();
-
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
-  return (
-    <canvas 
-      ref={canvasRef} 
-      className="absolute inset-0 w-full h-full pointer-events-none opacity-80"
-    />
-  );
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-60" />;
 };
 
-/**
- * Brand Identity Logo
- */
 const Logo = ({ className = "h-8", iconOnly = false }) => (
   <div className={`flex items-center space-x-3 group cursor-pointer ${className}`}>
-    <div className="relative w-10 h-10 shrink-0">
+    <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full transform group-hover:scale-110 transition-transform duration-300">
         <path d="M20 4L34 11V29L20 36L6 29V11L20 4Z" className="stroke-indigo-500" strokeWidth="2" strokeLinejoin="round" />
-        <path d="M20 12V28" className="stroke-indigo-400 opacity-50" strokeWidth="1.5" />
-        <path d="M12 16L20 20L28 16" className="stroke-indigo-400" strokeWidth="1.5" />
-        <circle cx="20" cy="20" r="3" fill="white" className="shadow-lg shadow-indigo-500" />
+        <circle cx="20" cy="20" r="3.5" fill="white" className="shadow-lg shadow-indigo-500" />
         <circle cx="20" cy="4" r="1.5" fill="#6366f1" />
         <circle cx="34" cy="11" r="1.5" fill="#6366f1" />
         <circle cx="34" cy="29" r="1.5" fill="#6366f1" />
@@ -147,11 +123,10 @@ const Logo = ({ className = "h-8", iconOnly = false }) => (
         <circle cx="6" cy="11" r="1.5" fill="#6366f1" />
       </svg>
     </div>
-    
     {!iconOnly && (
       <div className="flex flex-col leading-none">
-        <span className="text-xl font-black tracking-tighter text-white uppercase italic">Agentico</span>
-        <span className="text-[8px] font-bold tracking-[0.4em] text-indigo-400 uppercase mt-0.5">Hospitality</span>
+        <span className="text-lg sm:text-xl font-black tracking-tighter text-white uppercase italic leading-none">Agentico</span>
+        <span className="text-[7px] sm:text-[8px] font-bold tracking-[0.4em] text-indigo-400 uppercase mt-1 leading-none">Hospitality</span>
       </div>
     )}
   </div>
@@ -165,12 +140,10 @@ const App = () => {
     link.href = "https://assets.calendly.com/assets/external/widget.css";
     link.rel = "stylesheet";
     document.head.appendChild(link);
-
     const script = document.createElement('script');
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
-
     return () => {
       if (document.head.contains(link)) document.head.removeChild(link);
       if (document.body.contains(script)) document.body.removeChild(script);
@@ -188,204 +161,132 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-indigo-500/30">
+    <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-indigo-500/30 overflow-x-hidden">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-[#020617]/90 backdrop-blur-md border-b border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Logo />
-            <div className="hidden md:flex items-center space-x-10">
-              <a href="#experience" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Agency Strengths</a>
-              <a href="#services" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Services</a>
-              <a href="#success" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Success Story</a>
-              <button 
-                onClick={handleBooking}
-                className="bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20"
-              >
-                Free Consultation
-              </button>
-            </div>
+      <nav className="sticky top-0 z-50 bg-[#020617]/80 backdrop-blur-xl border-b border-slate-800/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+          <Logo />
+          <div className="flex items-center space-x-4 sm:space-x-10">
+            <button onClick={handleBooking} className="bg-indigo-600 text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 active:scale-95">
+              Book Strategy Call
+            </button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden border-b border-slate-900">
+      <section className="relative pt-12 pb-24 lg:pt-28 lg:pb-36 overflow-hidden border-b border-slate-900">
         <NeuralBackground />
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            {/* AEO Revolution Badge */}
-            <div className="inline-flex items-center space-x-2 bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 mb-6 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-lime-400 italic">SEO is Legacy. Welcome to the AEO Revolution.</span>
-            </div>
-
-            {/* Margin Maximization Badge */}
-            <div className="inline-flex items-center space-x-2 bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 mb-8 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-              </span>
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-amber-400 italic">Direct Booking Maximization: Reclaim 25% Margin</span>
+          <div className="max-w-4xl mx-auto lg:mx-0 text-center lg:text-left">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+              <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
+                <span className="text-[10px] font-black uppercase text-lime-400 italic">SEO is Legacy. Welcome to AEO.</span>
+              </div>
+              <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
+                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider">Free Strategy Consultation</span>
+              </div>
             </div>
             
-            <h1 className="text-5xl lg:text-[100px] font-black text-white mb-8 leading-[0.8] tracking-tighter uppercase italic">
-              PAYING UP TO <br /> 25% TO OTA<span className="lowercase">s</span>? <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 uppercase">BOOST DIRECT BOOKINGS WITH AI.</span>
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tighter uppercase italic">
+              BOOST DIRECT BOOKINGS <br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 italic leading-tight">WITH AI ENGINE OPTIMIZATION.</span>
             </h1>
             
-            <p className="text-xl text-slate-400 mb-12 leading-relaxed font-light max-w-3xl">
-              Hotel room night sales online are still dominated by legacy OTAs, but AI is fundamentally disrupting how travelers search and buy. We <span className="text-white font-medium italic underline decoration-indigo-500/50">re-engineer your digital presence</span> using <span className="text-white font-medium">AEO (Answer Engine Optimization)</span>—enabling AI agents to send traffic directly to your booking engine.
+            <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-12 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
+              Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers buy. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2">map your AEO optimization gaps</span> and deploy the infrastructure for AI agents to book your property directly.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center gap-8">
-              <button 
-                onClick={handleBooking}
-                className="group flex items-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-indigo-500/10 text-lg hover:bg-slate-200"
-              >
-                <span>Free AI Visibility Intro Consultation</span>
-                <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform text-indigo-600" />
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
+              <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
+                <span>Book My Free AEO Gap Analysis</span>
+                <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
-              
-              <div className="flex flex-col space-y-2">
+              <div className="flex flex-col space-y-2 text-left">
                 <div className="flex items-center space-x-2">
-                  <div className="w-24 h-2 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
                     <div className="w-[57%] h-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
                   </div>
-                  <span className="text-[10px] font-black uppercase text-indigo-400">4/7 Intake Slots Filled</span>
+                  <span className="text-[9px] font-black uppercase text-indigo-400 tracking-widest">4/7 Slots Filled</span>
                 </div>
-                <span className="text-xs text-slate-500 italic">Exclusively onboarding <span className="font-black text-white italic underline decoration-indigo-500">7 properties</span> per destination.</span>
+                <span className="text-[10px] text-zinc-400 italic uppercase tracking-widest text-center lg:text-left">Property Exclusivity protocol active.</span>
               </div>
             </div>
           </div>
         </div>
-        
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-30"></div>
       </section>
 
-      {/* Agency Experience Section */}
+      {/* AGENCY STRENGTHS SECTION */}
       <section id="experience" className="py-24 border-y border-slate-900 bg-slate-950/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-16 gap-8 text-center lg:text-left">
-            <div className="max-w-3xl">
-              <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Our Agency Strengths</span>
-              <h2 className="text-4xl lg:text-[64px] font-black text-white mt-4 tracking-tighter italic uppercase leading-[0.9]">The Anatomy of Our <br /> Direct-Booking Expertise.</h2>
-            </div>
-            <div className="lg:text-right">
-              <p className="text-slate-400 max-w-sm ml-auto text-sm leading-relaxed font-light italic">
-                A unique synergy of technical AI engineering, operational hospitality management, and travel content marketing.
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mb-20 text-center lg:text-left">
+            <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">The Agentico Advantage</span>
+            <h2 className="text-3xl lg:text-5xl font-black text-white mt-4 tracking-tighter italic uppercase leading-[1.1]">The Anatomy of Our <br /> Direct-Booking Expertise.</h2>
           </div>
-
           <div className="grid lg:grid-cols-3 gap-8">
-            <div className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 hover:border-indigo-500/30 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:rotate-6 transition-transform">
-                <Bot className="text-white w-6 h-6" />
-              </div>
-              <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4">Conversational AI & LLMs</h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
-                We possess deep-level experience in Large Language Model (LLM) architectures. We don't just use AI; we understand how agents perceive, process, and cite data entities in the vector space.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 hover:border-indigo-500/30 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:rotate-6 transition-transform">
-                <Landmark className="text-white w-6 h-6" />
-              </div>
-              <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4">Hotel Management Expertise</h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
-                We speak the language of RevPAR, ADR, and occupancy. Our background in hospitality management ensures that our technical solutions align with your daily operational realities.
-              </p>
-            </div>
-
-            <div className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 hover:border-indigo-500/30 transition-all duration-300 group">
-              <div className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:rotate-6 transition-transform">
-                <Compass className="text-white w-6 h-6" />
-              </div>
-              <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4">Travel Content Marketing</h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
-                Extensive experience in travel-space marketing allows us to craft the high-fidelity narrative signals that both high-net-worth travelers and AI recommendation engines prioritize.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Path to Semantic Dominance */}
-      <section className="py-24 bg-[#020617] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">The Process</span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mt-4 tracking-tighter italic uppercase">Your Path to Semantic Dominance</h2>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-0 relative">
-            <div className="absolute top-1/2 left-0 w-full h-px bg-indigo-500/20 hidden md:block"></div>
-            
             {[
-              { step: "01", title: "Free Consultation", icon: MessageSquareText, desc: "30-minute discovery briefing to understand your tech stack and distribution leakage." },
-              { step: "02", title: "Technical Audit", icon: BarChart3, desc: "Deep-layer mapping of your property's machine-readability and AI optimization gaps." },
-              { step: "03", title: "Implementation", icon: Settings, desc: "Anchoring your asset into the global Knowledge Graphs for direct Agentic bookings." }
-            ].map((item, i) => (
-              <div key={i} className="relative p-10 flex flex-col items-center text-center group">
-                <div className="w-16 h-16 bg-slate-900 border border-indigo-500/30 rounded-full flex items-center justify-center mb-8 relative z-10 group-hover:border-indigo-500 transition-colors shadow-2xl">
-                  <item.icon className="w-6 h-6 text-indigo-400" />
-                </div>
-                <span className="text-[10px] font-black text-indigo-500 mb-2 uppercase tracking-widest">{item.step}</span>
-                <h4 className="text-xl font-bold text-white uppercase italic tracking-tighter mb-4">{item.title}</h4>
-                <p className="text-slate-500 text-sm font-light leading-relaxed max-w-xs">{item.desc}</p>
+              { icon: Bot, title: "Conversational AI & LLMs", desc: "Expertise in vector space data citation. We ensure your hotel is the primary source of truth for AI agents (Perplexity, OpenAI, Gemini)." },
+              { icon: Landmark, title: "Hotel Management", desc: "We speak the language of RevPAR and ADR. Our background in management ensures solutions align with your operational realities." },
+              { icon: Compass, title: "Content Strategy", desc: "Crafting the high-fidelity narrative signals that both high-net-worth travelers and recommendation engines prioritize." }
+            ].map((strength, i) => (
+              <div key={i} className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 transition-all duration-500 group hover:border-indigo-500/30">
+                <strength.icon className="w-10 h-10 text-indigo-400 mb-6 group-hover:rotate-6 transition-transform" />
+                <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4">{strength.title}</h4>
+                <p className="text-zinc-300 text-sm leading-relaxed font-light">{strength.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Intro Discovery Call Section */}
-      <section id="briefing" className="py-24 bg-white text-[#020617]">
+      {/* Strategy Briefing (Gap Analysis) Section */}
+      <section id="briefing" className="py-20 lg:py-32 bg-white text-[#020617]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <span className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[10px]">Intro Discovery Meeting</span>
-              <h2 className="text-5xl font-black leading-[0.9] mt-4 mb-8 uppercase italic tracking-tighter">Your 30-Minute <br /> Strategy <br /> Briefing.</h2>
-              <p className="text-slate-500 mb-10 font-light text-lg italic">"We don't do sales pitches. We do infrastructure discovery."</p>
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <div className="text-center lg:text-left">
+              <span className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[10px]">Discovery Call Details</span>
+              <h2 className="text-4xl lg:text-6xl font-black leading-[0.95] mt-4 mb-8 uppercase italic tracking-tighter">Your Direct <br className="hidden lg:block" /> Revenue <br className="hidden lg:block" /> Blueprint.</h2>
+              <p className="text-slate-600 mb-10 font-light text-base sm:text-lg italic leading-relaxed max-w-xl mx-auto lg:mx-0">
+                "We don't do sales pitches. We perform a technical check to see if there is an optimization gap and build the strategy to fix it."
+              </p>
               
-              <div className="space-y-8">
+              <div className="grid gap-8 text-left">
                 {[
-                  { icon: Banknote, title: "Room Night Sales Situation", text: "We'll discuss your current distribution health and identify primary sources of commission leakage." },
-                  { icon: Globe, title: "Visibility & Marketing Review", text: "An assessment of your online footprint and how legacy marketing fails to speak to AI agents." },
-                  { icon: Database, title: "Tech Stack Understanding", text: "We review your existing PMS and booking engine architecture to ensure Agentic compatibility." },
-                  { icon: Bot, title: "The AI Agent Approach", text: "A technical walkthrough of how we transform your property data into an authoritative citation." }
+                  { icon: SearchCode, title: "Optimisation Gap Check", text: "We analyze your digital presence to see where AI agents are currently failing to cite your property for direct bookings." },
+                  { icon: LineChart, title: "Revenue Mapping", text: "Identifying search intents where you are overpaying 25% commission to OTAs for traffic you should own." },
+                  { icon: Target, title: "Strategic Roadmap", text: "A step-by-step plan to anchor your hotel into global Knowledge Graphs for authoritative citation." }
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 group">
-                    <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
-                      <item.icon className="w-6 h-6 transition-colors" />
+                  <div key={i} className="flex gap-4 sm:gap-6 group">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm border border-slate-200">
+                      <span className="font-black italic text-lg">{i+1}</span>
                     </div>
                     <div>
-                      <h4 className="font-black text-sm uppercase italic tracking-tighter">{item.title}</h4>
-                      <p className="text-slate-500 text-xs font-light leading-relaxed">{item.text}</p>
+                      <h4 className="font-black text-sm sm:text-base uppercase italic tracking-tight mb-1">{item.title}</h4>
+                      <p className="text-slate-500 text-xs sm:text-sm font-light leading-relaxed">{item.text}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            
             <div className="relative">
-              <div className="bg-slate-900 rounded-[3rem] p-12 text-white shadow-2xl border border-slate-800 relative overflow-hidden">
-                <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
-                <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10">Protect your <span className="text-indigo-400">future margins.</span></h3>
-                <p className="text-slate-400 text-sm mb-8 font-light italic relative z-10 leading-relaxed">
-                  During this call, we will explore the <span className="text-indigo-400 font-black">potential margin gains</span> achievable through an optimized direct distribution model.
+              <div className="bg-[#020617] rounded-[2.5rem] sm:rounded-[3.5rem] p-8 sm:p-12 text-white shadow-2xl border border-slate-800 relative overflow-hidden group">
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
+                <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10">Protect your <br /><span className="text-indigo-400">future margins.</span></h3>
+                <p className="text-zinc-300 text-sm mb-10 font-light italic relative z-10 leading-relaxed">
+                  During this free 30-minute call, we will determine if your tech stack is AEO-ready and map out your path to direct booking dominance.
                 </p>
                 <button 
                   onClick={handleBooking}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-3 shadow-xl shadow-indigo-500/20 relative z-10"
+                  className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 sm:py-6 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-4 shadow-2xl shadow-indigo-500/30 relative z-10 text-xs sm:text-sm active:scale-95"
                 >
-                  <Calendar className="w-5 h-5" />
-                  <span>Free AI Visibility Intro Consultation</span>
+                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
+                  <span>Start My Strategy Briefing</span>
                 </button>
-                <div className="mt-6 flex items-center justify-center space-x-2 text-[10px] text-slate-500 uppercase font-black relative z-10">
-                  <UserCheck className="w-3 h-3" />
-                  <span>Property Owners & Technical Leads Only</span>
+                <div className="mt-8 flex items-center justify-center space-x-3 text-[9px] sm:text-[10px] text-zinc-400 uppercase font-black relative z-10 tracking-[0.2em]">
+                  <UserCheck className="w-4 h-4 text-indigo-400" />
+                  <span>Only 7 properties per destination</span>
                 </div>
               </div>
             </div>
@@ -393,95 +294,121 @@ const App = () => {
         </div>
       </section>
 
-      {/* Success Story & Case Study */}
-      <section id="success" className="py-24 bg-[#020617] border-y border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+      {/* Success Story */}
+      <section id="success" className="py-20 lg:py-24 bg-[#020617] border-y border-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
            <div className="order-2 lg:order-1">
-              <div className="bg-slate-900/50 p-10 rounded-[3rem] border border-slate-800 relative shadow-2xl">
-                 <div className="absolute -top-4 left-10 bg-indigo-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl">
-                   Case Study: Margin Recovery
-                 </div>
-                 
-                 <div className="flex items-center space-x-4 mb-8 mt-4">
-                    <div className="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                       <Award className="text-white w-6 h-6" />
+              <div className="bg-slate-900/50 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-800 relative shadow-2xl">
+                 <div className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-8">Case Study: Margin Reclaim</div>
+                 <div className="flex items-center space-x-4 mb-8 text-left">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-600 rounded-xl sm:rounded-2xl flex items-center justify-center">
+                       <Award className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                       <h3 className="text-2xl font-black text-white italic uppercase">Vayalen Boutique Hotel</h3>
-                       <p className="text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-bold">Vienna, Austria</p>
+                       <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase leading-none">Vayalen Boutique Hotel</h3>
+                       <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-bold mt-2 leading-none">Vienna, Austria</p>
                     </div>
                  </div>
-                 <p className="text-slate-400 text-sm leading-relaxed mb-8 font-light">
-                    By deploying our <span className="text-white italic font-medium">Semantic Anchoring</span> protocol, Vayalen Boutique Hotel reclaimed authority for niche luxury queries. AI Agents now cite the property as the primary source of truth in Vienna.
-                 </p>
-                 <div className="grid grid-cols-2 gap-4 text-center md:text-left">
-                    <div className="p-4 bg-slate-800/50 rounded-2xl border border-indigo-500/20">
-                       <div className="text-3xl font-black text-white leading-none">+40%</div>
-                       <div className="text-[9px] text-slate-500 uppercase font-bold text-center mt-2">Direct Share Shift</div>
+                 <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light italic text-left">"By deploying Agentico's strategy, we identified major citation gaps. We reclaimed visibility and bypassed OTA commission cycles for luxury search intents."</p>
+                 <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
+                    <div className="p-4 sm:p-5 bg-slate-800/50 rounded-xl sm:rounded-2xl border border-indigo-500/20">
+                       <div className="text-2xl sm:text-3xl font-black text-white leading-none">+40%</div>
+                       <div className="text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold mt-2 leading-tight">Direct Share Shift</div>
                     </div>
-                    <div className="p-4 bg-slate-800/50 rounded-2xl border border-indigo-900/20">
-                       <div className="text-3xl font-black text-slate-300 leading-none">+312%</div>
-                       <div className="text-[9px] text-slate-500 uppercase font-bold text-center mt-2">Agent Discovery</div>
+                    <div className="p-4 sm:p-5 bg-slate-800/50 rounded-xl sm:rounded-2xl border border-indigo-900/20">
+                       <div className="text-2xl sm:text-3xl font-black text-indigo-400 leading-none">+312%</div>
+                       <div className="text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold mt-2 leading-tight">Agent Discovery</div>
                     </div>
                  </div>
               </div>
            </div>
            <div className="order-1 lg:order-2 text-center lg:text-left">
-              <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Success Story & Impact Analysis</span>
-              <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-8 leading-tight uppercase italic tracking-tighter">Infrastructure <br /> Beats <br /> Marketing.</h2>
-              <button 
-                onClick={handleBooking}
-                className="group flex items-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-slate-200 mx-auto lg:mx-0"
-              >
-                <span className="text-xs font-black uppercase tracking-widest text-black">Free AI Visibility Intro Consultation</span>
+              <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Real-World Proof</span>
+              <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-10 leading-tight uppercase italic tracking-tighter">Infrastructure <br className="hidden lg:block" /> Beats <br className="hidden lg:block" /> Marketing.</h2>
+              <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-zinc-200 mx-auto lg:mx-0">
+                <span className="text-xs font-black uppercase tracking-widest text-black italic">Book My Free Strategy Call</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
            </div>
         </div>
       </section>
 
-      {/* Services & Pricing Section */}
-      <section id="services" className="py-24 bg-[#020617]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+      {/* Services Section */}
+      <section id="services" className="py-20 lg:py-24 bg-[#020617]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-20">
           <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Solutions</span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mt-4 tracking-tighter italic uppercase">Our Services & Pricing</h2>
+          <h2 className="text-3xl lg:text-5xl font-bold text-white mt-4 tracking-tighter italic uppercase leading-none text-white">The Framework</h2>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
-          <div className="bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col h-full group shadow-2xl">
-            <BarChart3 className="text-indigo-400 w-10 h-10 mb-6" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">AI Readiness Audit</h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-8">Deep-technical analysis of machine-readability optimization gaps.</p>
+          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
+            <BarChart3 className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Gap Analysis</h3>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
             <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white">$699</span>
-              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Fixed Fee</span>
+              <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">Fixed Fee</span>
             </div>
           </div>
-          <div className="bg-indigo-600/5 p-10 rounded-[2.5rem] border border-indigo-500/30 hover:border-indigo-500/60 transition-all flex flex-col h-full relative overflow-hidden shadow-2xl">
-            <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase">Limited</div>
-            <Layers className="text-indigo-400 w-10 h-10 mb-6" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Knowledge Graph Setup</h3>
-            <p className="text-slate-300 text-sm leading-relaxed mb-8">Building your proprietary Hotel Data Entity for LLM citation.</p>
-            <div className="mt-auto font-black text-white uppercase italic">Custom Quote</div>
+          <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group">
+            <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase shadow-lg tracking-widest">Priority</div>
+            <Layers className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight">Entity Anchoring</h3>
+            <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light">Building proprietary Hotel Data Entities for authoritative citation across agentic LLMs.</p>
+            <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg">Custom Quote</div>
           </div>
-          <div className="bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col h-full group shadow-2xl">
-            <Activity className="text-indigo-400 w-10 h-10 mb-6" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Ongoing Monitoring</h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-8">Active semantic maintenance and LLM hallucination checks.</p>
+          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
+            <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight">Active Protocol</h3>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light">Ongoing semantic maintenance and hallucination checks to keep referrals active.</p>
             <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white">$499</span>
-              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">/ Month</span>
+              <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">/ Month</span>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* POST-PRICING CTA SECTION */}
+      <section className="py-24 sm:py-32 bg-[#020617] relative overflow-hidden border-t border-slate-900">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-5 py-2 mb-10">
+            <ShieldCheck className="w-4 h-4 text-indigo-400" />
+            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-400">Secure Your Asset's Future Authority</span>
+          </div>
+          
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-8 italic uppercase tracking-tighter leading-[1.05]">
+            RECLAIM YOUR <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">DIRECT REVENUE.</span>
+          </h2>
+          
+          <p className="text-lg sm:text-xl text-zinc-200 mb-14 leading-relaxed font-light max-w-2xl mx-auto">
+            Our destination slots fill fast. Don't let OTAs continue capturing your highest-margin search traffic. Book your briefing to secure exclusivity.
+          </p>
+
+          <div className="flex flex-col items-center gap-6 px-4">
+            <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-8 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
+              <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+              <span>Book My Free AEO Gap Analysis</span>
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+            </button>
+            <div className="flex items-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
+              <Zap className="w-4 h-4 text-amber-500 animate-pulse" />
+              <span>Infrastructure Discovery • Zero Pitch Environment</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-[100px]"></div>
+        <div className="absolute -right-20 -top-20 w-80 h-80 bg-violet-600/10 rounded-full blur-[100px]"></div>
       </section>
 
       {/* Footer */}
       <footer className="py-20 border-t border-slate-900 bg-[#020617] text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <Logo className="mb-8" iconOnly />
-          <p className="text-slate-500 text-xs uppercase tracking-[0.5em] mb-4">Agentico Hospitality</p>
-          <p className="text-slate-600 text-[10px] max-w-sm leading-relaxed font-mono italic">
-            Direct-to-Agent infrastructure for high-fidelity hospitality. © 2026.
+          <p className="text-zinc-200 text-[10px] uppercase tracking-[0.5em] mb-4">Agentico Hospitality</p>
+          <p className="text-zinc-400 text-[9px] sm:text-[10px] max-w-sm mx-auto font-mono italic opacity-70 leading-loose">
+            Secure Protocol Deployment. © 2026. <br /> All Rights Reserved.
           </p>
         </div>
       </footer>
