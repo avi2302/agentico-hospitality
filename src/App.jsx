@@ -12,7 +12,7 @@ import {
   Layers,
   Activity,
   UserCheck,
-  Globe,
+  Globe, 
   Landmark,
   Compass,
   Settings,
@@ -112,21 +112,18 @@ const NeuralBackground = () => {
 const Logo = ({ className = "h-8", iconOnly = false }) => (
   <div className={`flex items-center space-x-3 group cursor-pointer ${className}`}>
     <div className="relative w-9 h-9 sm:w-10 sm:h-10 shrink-0">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full transform group-hover:scale-110 transition-transform duration-300">
-        <path d="M20 4L34 11V29L20 36L6 29V11L20 4Z" className="stroke-indigo-500" strokeWidth="2" strokeLinejoin="round" />
-        <circle cx="20" cy="20" r="3.5" fill="white" className="shadow-lg shadow-indigo-500" />
-        <circle cx="20" cy="4" r="1.5" fill="#6366f1" />
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+        <path d="M20 4L34 11V29L20 36L6 29V11L20 4Z" className="stroke-indigo-500" strokeWidth="2.5" strokeLinejoin="round" />
+        <path d="M20 10L26 20L20 30L14 20L20 10Z" fill="white" className="group-hover:fill-indigo-400 transition-colors" />
+        <circle cx="20" cy="20" r="3.5" fill="#6366f1" className="shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
         <circle cx="34" cy="11" r="1.5" fill="#6366f1" />
-        <circle cx="34" cy="29" r="1.5" fill="#6366f1" />
-        <circle cx="20" cy="36" r="1.5" fill="#6366f1" />
         <circle cx="6" cy="29" r="1.5" fill="#6366f1" />
-        <circle cx="6" cy="11" r="1.5" fill="#6366f1" />
       </svg>
     </div>
     {!iconOnly && (
       <div className="flex flex-col leading-none text-left">
         <span className="text-lg sm:text-xl font-black tracking-tighter text-white uppercase italic leading-none">Agentico</span>
-        <span className="text-[7px] sm:text-[8px] font-bold tracking-[0.4em] text-indigo-400 uppercase mt-1 leading-none">Hospitality</span>
+        <span className="text-[9px] sm:text-[10px] font-black tracking-[0.3em] text-indigo-400 uppercase italic mt-0.5 leading-none ml-0.5">Travel</span>
       </div>
     )}
   </div>
@@ -167,8 +164,8 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
           <Logo />
           <div className="flex items-center space-x-4 sm:space-x-10">
-            <button onClick={handleBooking} className="bg-indigo-600 text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 active:scale-95">
-              Book Strategy Call
+            <button onClick={handleBooking} className="bg-indigo-600 text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-bold text-[9px] sm:text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 active:scale-95">
+              Book free AI strategy call
             </button>
           </div>
         </div>
@@ -182,15 +179,15 @@ const App = () => {
             {/* Centered Badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
-                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest">SEO is Legacy. Welcome to AEO.</span>
+                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest leading-none">SEO is Legacy. Welcome to AEO.</span>
               </div>
               <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
-                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase">Free Strategy Consultation</span>
+                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase leading-none">Free Strategy Consultation</span>
               </div>
             </div>
             
-            {/* Header: Scaled down from 7xl to 5xl for professional balance */}
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-8 leading-[1.2] tracking-tight uppercase italic">
+            {/* Header: Centered and Scaled */}
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tighter uppercase italic">
               BOOST DIRECT BOOKINGS <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 italic leading-tight">WITH AI ENGINE OPTIMIZATION.</span>
             </h1>
@@ -203,7 +200,7 @@ const App = () => {
             {/* Centered Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
-                <span>Claim My Free Strategy Briefing</span>
+                <span>Unlock my AI agent visiblity</span>
                 <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
               <div className="flex flex-col space-y-2 text-center">
@@ -228,13 +225,13 @@ const App = () => {
             <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">The Agentico Advantage</span>
             <h2 className="text-3xl lg:text-5xl font-black text-white mt-4 tracking-tighter italic uppercase leading-[1.1]">The Anatomy of Our <br /> Direct-Booking Expertise.</h2>
           </div>
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8 text-center sm:text-left">
             {[
               { icon: Bot, title: "Conversational AI & LLMs", desc: "Expertise in vector space data citation. We ensure your hotel is the primary source of truth for AI agents (Perplexity, OpenAI, Gemini)." },
               { icon: Landmark, title: "Hotel Management", desc: "We speak the language of RevPAR and ADR. Our background in management ensures solutions align with your operational realities." },
               { icon: Compass, title: "Content Strategy", desc: "Crafting the high-fidelity narrative signals that both high-net-worth travelers and recommendation engines prioritize." }
             ].map((strength, i) => (
-              <div key={i} className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 transition-all duration-500 group hover:border-indigo-500/30">
+              <div key={i} className="p-8 rounded-[2rem] bg-indigo-500/5 border border-indigo-500/10 transition-all duration-500 group hover:border-indigo-500/30 flex flex-col items-center sm:items-start text-center sm:text-left">
                 <strength.icon className="w-10 h-10 text-indigo-400 mb-6 group-hover:rotate-6 transition-transform" />
                 <h4 className="text-lg font-bold text-white uppercase italic tracking-tighter mb-4 leading-tight">{strength.title}</h4>
                 <p className="text-zinc-300 text-sm leading-relaxed font-light">{strength.desc}</p>
@@ -244,11 +241,11 @@ const App = () => {
         </div>
       </section>
 
-      {/* Strategy Briefing (Gap Analysis) Section */}
+      {/* Discovery Call Details Section */}
       <section id="briefing" className="py-20 lg:py-32 bg-white text-[#020617]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center text-center lg:text-left">
-            <div>
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <div className="text-center lg:text-left">
               <span className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[10px]">Discovery Call Details</span>
               <h2 className="text-4xl lg:text-6xl font-black leading-[0.95] mt-4 mb-8 uppercase italic tracking-tighter">Your Direct <br className="hidden lg:block" /> Revenue <br className="hidden lg:block" /> Blueprint.</h2>
               <p className="text-slate-600 mb-10 font-light text-base sm:text-lg italic leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -277,7 +274,7 @@ const App = () => {
             <div className="relative">
               <div className="bg-[#020617] rounded-[2.5rem] sm:rounded-[3.5rem] p-8 sm:p-12 text-white shadow-2xl border border-slate-800 relative overflow-hidden group">
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
-                <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10">Protect your <br /><span className="text-indigo-400">future margins.</span></h3>
+                <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10 text-white">Protect your <br /><span className="text-indigo-400">future margins.</span></h3>
                 <p className="text-zinc-300 text-sm mb-10 font-light italic relative z-10 leading-relaxed">
                   During this free 30-minute call, we will determine if your tech stack is AEO-ready and provide a roadmap for reclaiming direct revenue.
                 </p>
@@ -301,7 +298,7 @@ const App = () => {
       {/* Success Story */}
       <section id="success" className="py-20 lg:py-24 bg-[#020617] border-y border-slate-900 text-center lg:text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-           <div className="order-2 lg:order-1">
+           <div className="order-2 lg:order-1 mx-auto lg:mx-0">
               <div className="bg-slate-900/50 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-800 relative shadow-2xl">
                  <div className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-8 leading-none">Case Study: Margin Reclaim</div>
                  <div className="flex items-center justify-center sm:justify-start space-x-4 mb-8">
@@ -317,11 +314,11 @@ const App = () => {
                  <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
                     <div className="p-4 sm:p-5 bg-slate-800/50 rounded-xl sm:rounded-2xl border border-indigo-500/20">
                        <div className="text-2xl sm:text-3xl font-black text-white leading-none">+40%</div>
-                       <div className="text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold mt-2 leading-tight">Direct Share Shift</div>
+                       <div className="text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold mt-2 leading-tight text-center">Direct Share Shift</div>
                     </div>
                     <div className="p-4 sm:p-5 bg-slate-800/50 rounded-xl sm:rounded-2xl border border-indigo-900/20">
                        <div className="text-2xl sm:text-3xl font-black text-indigo-400 leading-none">+312%</div>
-                       <div className="text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold mt-2 leading-tight">Agent Discovery</div>
+                       <div className="text-[8px] sm:text-[9px] text-zinc-400 uppercase font-bold mt-2 leading-tight text-center">Agent Discovery</div>
                     </div>
                  </div>
               </div>
@@ -353,14 +350,14 @@ const App = () => {
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">Fixed Fee</span>
             </div>
           </div>
-          <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group">
+          <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group text-left">
             <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase shadow-lg tracking-widest">Priority</div>
             <Layers className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Entity Anchoring</h3>
             <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light text-left">Building proprietary Hotel Data Entities for authoritative citation across agentic LLMs.</p>
             <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg text-left">Custom Quote</div>
           </div>
-          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
+          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group text-left">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Active Protocol</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
@@ -392,7 +389,7 @@ const App = () => {
           <div className="flex flex-col items-center gap-6 px-4">
             <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-8 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
               <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-              <span>Book My Free AI Engine Strategy Call</span>
+              <span>book my free AI visibility strategy call</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </button>
             <div className="flex items-center justify-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
@@ -410,7 +407,7 @@ const App = () => {
       <footer className="py-20 border-t border-slate-900 bg-[#020617] text-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <Logo className="mb-8" iconOnly />
-          <p className="text-zinc-200 text-[10px] uppercase tracking-[0.5em] mb-4">Agentico Hospitality</p>
+          <p className="text-zinc-200 text-[10px] uppercase tracking-[0.5em] mb-4">Agentico Travel</p>
           <p className="text-zinc-400 text-[9px] sm:text-[10px] max-w-sm mx-auto font-mono italic opacity-70 leading-loose">
             Secure Protocol Deployment. © 2026. <br /> All Rights Reserved.
           </p>
