@@ -29,7 +29,10 @@ import {
   Zap
 } from 'lucide-react';
 
-// AI Inspired Background Animation Component
+/**
+ * AI Inspired Background Animation
+ * Renders a neural-network style particle system on a canvas.
+ */
 const NeuralBackground = () => {
   const canvasRef = useRef(null);
 
@@ -125,7 +128,9 @@ const NeuralBackground = () => {
   );
 };
 
-// Custom Brand Logo Component
+/**
+ * Brand Identity Logo
+ */
 const Logo = ({ className = "h-8", iconOnly = false }) => (
   <div className={`flex items-center space-x-3 group cursor-pointer ${className}`}>
     <div className="relative w-10 h-10 shrink-0">
@@ -184,18 +189,18 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-100 font-sans selection:bg-indigo-500/30">
-      {/* Sticky Nav */}
+      {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-[#020617]/90 backdrop-blur-md border-b border-slate-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             <Logo />
             <div className="hidden md:flex items-center space-x-10">
-              <a href="#stats" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">The Shift</a>
-              <a href="#experience" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Our Edge</a>
+              <a href="#experience" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Agency Strengths</a>
               <a href="#services" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Services</a>
+              <a href="#success" className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-400 transition-colors">Success Story</a>
               <button 
                 onClick={handleBooking}
-                className="bg-indigo-600 text-white px-5 py-2 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20"
+                className="bg-indigo-600 text-white px-6 py-2.5 rounded-full font-bold text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20"
               >
                 Free Consultation
               </button>
@@ -210,10 +215,12 @@ const App = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
+            {/* AEO Revolution Badge */}
             <div className="inline-flex items-center space-x-2 bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 mb-6 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
               <span className="text-[10px] font-black tracking-[0.3em] uppercase text-lime-400 italic">SEO is Legacy. Welcome to the AEO Revolution.</span>
             </div>
 
+            {/* Margin Maximization Badge */}
             <div className="inline-flex items-center space-x-2 bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 mb-8 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
@@ -234,7 +241,7 @@ const App = () => {
             <div className="flex flex-col sm:flex-row items-center gap-8">
               <button 
                 onClick={handleBooking}
-                className="group flex items-center space-x-4 bg-white hover:bg-slate-200 text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-indigo-500/10 text-lg"
+                className="group flex items-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-indigo-500/10 text-lg hover:bg-slate-200"
               >
                 <span>Free AI Visibility Intro Consultation</span>
                 <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform text-indigo-600" />
@@ -322,7 +329,7 @@ const App = () => {
               { step: "03", title: "Implementation", icon: Settings, desc: "Anchoring your asset into the global Knowledge Graphs for direct Agentic bookings." }
             ].map((item, i) => (
               <div key={i} className="relative p-10 flex flex-col items-center text-center group">
-                <div className="w-16 h-16 bg-slate-900 border border-indigo-500/30 rounded-full flex items-center justify-center mb-8 relative z-10 group-hover:border-indigo-500 transition-colors">
+                <div className="w-16 h-16 bg-slate-900 border border-indigo-500/30 rounded-full flex items-center justify-center mb-8 relative z-10 group-hover:border-indigo-500 transition-colors shadow-2xl">
                   <item.icon className="w-6 h-6 text-indigo-400" />
                 </div>
                 <span className="text-[10px] font-black text-indigo-500 mb-2 uppercase tracking-widest">{item.step}</span>
@@ -334,21 +341,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* AI Ecosystem Visibility */}
-      <section className="py-16 border-y border-slate-900 bg-slate-950/20 text-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500 mb-10 italic">Optimized for the Global AI Ecosystem</p>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 lg:gap-x-20 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-             <span className="text-xl font-bold tracking-tighter">PERPLEXITY</span>
-             <span className="text-xl font-bold tracking-tighter italic">OpenAI</span>
-             <span className="text-xl font-bold tracking-tighter uppercase">Claude</span>
-             <span className="text-xl font-bold tracking-tighter italic">Gemini</span>
-             <span className="text-xl font-bold tracking-tighter">Apple Intelligence</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Intro Discovery Meeting Section */}
+      {/* Intro Discovery Call Section */}
       <section id="briefing" className="py-24 bg-white text-[#020617]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -388,7 +381,7 @@ const App = () => {
                   className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-3 shadow-xl shadow-indigo-500/20 relative z-10"
                 >
                   <Calendar className="w-5 h-5" />
-                  <span>Book Strategy Briefing</span>
+                  <span>Free AI Visibility Intro Consultation</span>
                 </button>
                 <div className="mt-6 flex items-center justify-center space-x-2 text-[10px] text-slate-500 uppercase font-black relative z-10">
                   <UserCheck className="w-3 h-3" />
@@ -400,7 +393,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* Success Story & Case Study Section */}
+      {/* Success Story & Case Study */}
       <section id="success" className="py-24 bg-[#020617] border-y border-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
            <div className="order-2 lg:order-1">
@@ -433,25 +426,12 @@ const App = () => {
                  </div>
               </div>
            </div>
-           <div className="order-1 lg:order-2">
+           <div className="order-1 lg:order-2 text-center lg:text-left">
               <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Success Story & Impact Analysis</span>
               <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-8 leading-tight uppercase italic tracking-tighter">Infrastructure <br /> Beats <br /> Marketing.</h2>
-              <div className="space-y-4 mb-8 text-slate-400">
-                 {[
-                   "Direct Agent-to-PMS handshake activation",
-                   "Authoritative knowledge graph anchoring",
-                   "Zero commission leakage on specific intent",
-                   "Autonomous policy verification active 24/7"
-                 ].map((item, i) => (
-                   <div key={i} className="flex items-center space-x-3 text-sm font-light">
-                     <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0" />
-                     <span>{item}</span>
-                   </div>
-                 ))}
-              </div>
               <button 
                 onClick={handleBooking}
-                className="group flex items-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-slate-200"
+                className="group flex items-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-slate-200 mx-auto lg:mx-0"
               >
                 <span className="text-xs font-black uppercase tracking-widest text-black">Free AI Visibility Intro Consultation</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -465,121 +445,34 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
           <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Solutions</span>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mt-4 tracking-tighter italic uppercase">Our Services & Pricing</h2>
-          <p className="text-slate-500 mt-4 max-w-xl mx-auto text-sm font-light leading-relaxed">
-            We exclusively partner with <span className="font-black text-white italic underline decoration-indigo-500">7 properties</span> per destination to ensure total semantic dominance for our partners.
-          </p>
         </div>
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
           <div className="bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col h-full group shadow-2xl">
-            <div className="mb-8">
-              <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <BarChart3 className="text-indigo-400 w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">AI Readiness Audit</h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
-                Deep-technical analysis of your machine-readability. We identify critical optimization gaps preventing AI agents from recommending your property directly.
-              </p>
-            </div>
-            <div className="mt-auto pt-8 border-t border-slate-800">
-              <div className="flex items-baseline space-x-2 mb-4">
-                <span className="text-3xl font-black text-white">$699</span>
-                <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Fixed Fee</span>
-              </div>
-              <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
-                <div className="flex items-center space-x-2 mb-1">
-                  <Timer className="w-3 h-3 text-indigo-400 animate-pulse" />
-                  <span className="text-[10px] text-indigo-400 font-black uppercase tracking-widest">Restricted Intake</span>
-                </div>
-                <p className="text-[10px] text-slate-300 font-medium leading-snug">
-                  Audits are strictly limited to the current <span className="text-white font-bold italic">7-property</span> window to ensure delivery focus.
-                </p>
-              </div>
+            <BarChart3 className="text-indigo-400 w-10 h-10 mb-6" />
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">AI Readiness Audit</h3>
+            <p className="text-slate-500 text-sm leading-relaxed mb-8">Deep-technical analysis of machine-readability optimization gaps.</p>
+            <div className="mt-auto flex items-baseline space-x-2">
+              <span className="text-3xl font-black text-white">$699</span>
+              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Fixed Fee</span>
             </div>
           </div>
-
-          <div className="bg-indigo-600/5 p-10 rounded-[2.5rem] border border-indigo-500/30 hover:border-indigo-500/60 transition-all flex flex-col h-full relative overflow-hidden shadow-[0_0_50px_-12px_rgba(79,70,229,0.1)] group">
-            <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase tracking-[0.1em] z-10 text-center">Limited Intake</div>
-            <div className="mb-8 relative z-10">
-              <div className="w-12 h-12 bg-indigo-500 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
-                <Layers className="text-white w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Knowledge Graph Setup</h3>
-              <p className="text-slate-300 text-sm leading-relaxed font-light">
-                Building your proprietary Hotel Data Entity. We anchor your assets into Knowledge Graphs used by Perplexity, OpenAI, Gemini, Claude, and Apple Intelligence.
-              </p>
-            </div>
-            <div className="mt-auto pt-8 border-t border-indigo-500/20 relative z-10">
-              <div className="flex items-baseline space-x-2">
-                <span className="text-xl font-black text-white uppercase italic">Custom Quote</span>
-              </div>
-              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">
-                Based on audit results & technical scope.
-              </p>
-            </div>
+          <div className="bg-indigo-600/5 p-10 rounded-[2.5rem] border border-indigo-500/30 hover:border-indigo-500/60 transition-all flex flex-col h-full relative overflow-hidden shadow-2xl">
+            <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase">Limited</div>
+            <Layers className="text-indigo-400 w-10 h-10 mb-6" />
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Knowledge Graph Setup</h3>
+            <p className="text-slate-300 text-sm leading-relaxed mb-8">Building your proprietary Hotel Data Entity for LLM citation.</p>
+            <div className="mt-auto font-black text-white uppercase italic">Custom Quote</div>
           </div>
-
           <div className="bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800 hover:border-indigo-500/50 transition-all flex flex-col h-full group shadow-2xl">
-            <div className="mb-8">
-              <div className="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Activity className="text-indigo-400 w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Ongoing Monitoring</h3>
-              <p className="text-slate-500 text-sm leading-relaxed font-light">
-                The AI landscape shifts weekly. We provide active semantic maintenance, LLM hallucination checks, and data refreshes to ensure your direct booking pipe remains active.
-              </p>
-            </div>
-            <div className="mt-auto pt-8 border-t border-slate-800">
-              <div className="flex items-baseline space-x-2">
-                <span className="text-3xl font-black text-white">$499</span>
-                <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">/ Month</span>
-              </div>
-              <p className="text-[10px] text-slate-500 uppercase font-bold tracking-widest mt-1 italic">
-                Priority Retainer Protocol.
-              </p>
+            <Activity className="text-indigo-400 w-10 h-10 mb-6" />
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Ongoing Monitoring</h3>
+            <p className="text-slate-500 text-sm leading-relaxed mb-8">Active semantic maintenance and LLM hallucination checks.</p>
+            <div className="mt-auto flex items-baseline space-x-2">
+              <span className="text-3xl font-black text-white">$499</span>
+              <span className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">/ Month</span>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* FINAL CTA SECTION: The "Killer" Conversion Point */}
-      <section className="py-32 bg-[#020617] relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-1 mb-8">
-            <ShieldCheck className="w-3 h-3 text-indigo-400" />
-            <span className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-400">Secure Your Market Authority</span>
-          </div>
-          
-          <h2 className="text-4xl lg:text-7xl font-black text-white mb-8 italic uppercase tracking-tighter leading-none">
-            RECLAIM YOUR <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400">DIRECT REVENUE.</span>
-          </h2>
-          
-          <p className="text-xl text-slate-400 mb-12 leading-relaxed font-light">
-            Once the <span className="text-white font-medium italic underline decoration-indigo-500/50">7 property slots</span> for your destination are filled, we close intake to protect partner exclusivity. Don't let legacy OTAs continue capturing your highest-margin guests.
-          </p>
-
-          <div className="flex flex-col items-center gap-6">
-            <button 
-              onClick={handleBooking}
-              className="group flex items-center space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-sm shadow-2xl shadow-indigo-500/40"
-            >
-              <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              <span>Free AI Visibility Intro Consultation</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </button>
-            
-            <div className="flex items-center space-x-3 text-slate-500 text-[10px] font-black uppercase tracking-widest">
-              <Zap className="w-3 h-3 text-amber-500 animate-pulse" />
-              <span>Limited Availability • No-Pitch Discovery</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Technical Background Elements */}
-        <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-600/10 rounded-full blur-[100px]"></div>
-        <div className="absolute -right-20 -top-20 w-64 h-64 bg-violet-600/10 rounded-full blur-[100px]"></div>
       </section>
 
       {/* Footer */}
@@ -587,8 +480,8 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <Logo className="mb-8" iconOnly />
           <p className="text-slate-500 text-xs uppercase tracking-[0.5em] mb-4">Agentico Hospitality</p>
-          <p className="text-slate-600 text-[10px] max-w-sm leading-relaxed font-mono">
-            Direct-to-Agent infrastructure for high-fidelity hospitality. © 2026. <br /> Secure Protocol Deployment. All Rights Reserved.
+          <p className="text-slate-600 text-[10px] max-w-sm leading-relaxed font-mono italic">
+            Direct-to-Agent infrastructure for high-fidelity hospitality. © 2026.
           </p>
         </div>
       </footer>
