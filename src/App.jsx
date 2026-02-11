@@ -174,12 +174,13 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-24 lg:pt-28 lg:pb-36 overflow-hidden border-b border-slate-900">
+      {/* Hero Section - FIXED FORMATTING: Centered on all screen sizes */}
+      <section className="relative pt-12 pb-24 lg:pt-32 lg:pb-36 overflow-hidden border-b border-slate-900 text-center">
         <NeuralBackground />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto lg:mx-0 text-center lg:text-left">
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Badges Container - justify-center forced */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
               <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
                 <span className="text-[10px] font-black uppercase text-lime-400 italic">SEO is Legacy. Welcome to AEO.</span>
               </div>
@@ -188,22 +189,25 @@ const App = () => {
               </div>
             </div>
             
+            {/* Scaled and Centered Header */}
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tighter uppercase italic">
               BOOST DIRECT BOOKINGS <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 italic leading-tight">WITH AI ENGINE OPTIMIZATION.</span>
             </h1>
             
-            <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-12 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
+            {/* Centered Paragraph with mx-auto */}
+            <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-12 leading-relaxed font-light max-w-2xl mx-auto">
               Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers buy. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2 text-slate-100">map your AEO optimization gaps</span> and deploy the infrastructure for AI agents to book your property directly.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 sm:gap-8">
+            {/* Buttons Row - justify-center forced */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
                 <span>Claim My Free Strategy Briefing</span>
                 <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
-              <div className="flex flex-col space-y-2 text-left">
-                <div className="flex items-center space-x-2">
+              <div className="flex flex-col space-y-2 text-center">
+                <div className="flex items-center justify-center space-x-2">
                   <div className="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
                     <div className="w-[57%] h-full bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
                   </div>
@@ -220,7 +224,7 @@ const App = () => {
       {/* AGENCY STRENGTHS SECTION */}
       <section id="experience" className="py-24 border-y border-slate-900 bg-slate-950/40">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mb-20 text-center lg:text-left">
+          <div className="max-w-3xl mb-20 text-center mx-auto">
             <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">The Agentico Advantage</span>
             <h2 className="text-3xl lg:text-5xl font-black text-white mt-4 tracking-tighter italic uppercase leading-[1.1]">The Anatomy of Our <br /> Direct-Booking Expertise.</h2>
           </div>
@@ -253,9 +257,9 @@ const App = () => {
               
               <div className="grid gap-8 text-left">
                 {[
-                  { icon: SearchCode, title: "Optimisation Gap Check", text: "We analyze your current digital presence to see where AI agents are currently failing to cite your property for direct bookings." },
+                  { icon: SearchCode, title: "Optimisation Gap Check", text: "We analyze your current presence to see where AI agents are currently failing to cite your property for direct bookings." },
                   { icon: LineChart, title: "Revenue Mapping", text: "Identifying search intents where you are overpaying 25% commission to OTAs for traffic you should own." },
-                  { icon: Target, title: "Strategic Roadmap", text: "A step-by-step plan to anchor your hotel into global Knowledge Graphs for authoritative citation." }
+                  { icon: Target, title: "Strategic Roadmap", text: "A step-by-step technical plan to fix optimization gaps and anchor your hotel into global Knowledge Graphs." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 sm:gap-6 group">
                     <div className="w-12 h-12 sm:w-14 sm:h-14 bg-slate-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm border border-slate-200">
@@ -359,7 +363,7 @@ const App = () => {
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight">Active Protocol</h3>
-            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light">Ongoing semantic maintenance and hallucination checks to keep referrals active.</p>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
             <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white">$499</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">/ Month</span>
