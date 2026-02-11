@@ -392,7 +392,7 @@ const App = () => {
           <div className="flex flex-col items-center gap-6 px-4">
             <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-8 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
               <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-              <span>Book My Free Strategy Discovery</span>
+              <span>Book My Free AI Engine Strategy Call</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </button>
             <div className="flex items-center justify-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
