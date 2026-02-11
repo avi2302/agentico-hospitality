@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agentico Hospitality | AEO & Margin Recovery</title>
+    <!-- Corrected CDN Script Tag -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Ensure the background is dark even before React loads */
+      body { background-color: #020617; margin: 0; }
+    </style>
   </head>
-  <body class="bg-[#020617]">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
