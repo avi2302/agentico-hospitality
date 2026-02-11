@@ -124,7 +124,7 @@ const Logo = ({ className = "h-8", iconOnly = false }) => (
       </svg>
     </div>
     {!iconOnly && (
-      <div className="flex flex-col leading-none">
+      <div className="flex flex-col leading-none text-left">
         <span className="text-lg sm:text-xl font-black tracking-tighter text-white uppercase italic leading-none">Agentico</span>
         <span className="text-[7px] sm:text-[8px] font-bold tracking-[0.4em] text-indigo-400 uppercase mt-1 leading-none">Hospitality</span>
       </div>
@@ -174,33 +174,33 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section - FIXED FORMATTING: Centered on all screen sizes */}
-      <section className="relative pt-12 pb-24 lg:pt-32 lg:pb-36 overflow-hidden border-b border-slate-900 text-center">
+      {/* Hero Section - FORMATTING FIXED: Centered and Professionally Scaled */}
+      <section className="relative pt-16 pb-24 lg:pt-32 lg:pb-44 overflow-hidden border-b border-slate-900 text-center">
         <NeuralBackground />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            {/* Badges Container - justify-center forced */}
+            {/* Centered Badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
-                <span className="text-[10px] font-black uppercase text-lime-400 italic">SEO is Legacy. Welcome to AEO.</span>
+                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest">SEO is Legacy. Welcome to AEO.</span>
               </div>
               <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
                 <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase">Free Strategy Consultation</span>
               </div>
             </div>
             
-            {/* Scaled and Centered Header */}
-            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tighter uppercase italic">
+            {/* Header: Scaled down from 7xl to 5xl for professional balance */}
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-8 leading-[1.2] tracking-tight uppercase italic">
               BOOST DIRECT BOOKINGS <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 italic leading-tight">WITH AI ENGINE OPTIMIZATION.</span>
             </h1>
             
-            {/* Centered Paragraph with mx-auto */}
-            <p className="text-base sm:text-lg lg:text-xl text-zinc-200 mb-12 leading-relaxed font-light max-w-2xl mx-auto">
+            {/* Centered Paragraph */}
+            <p className="text-base sm:text-lg lg:text-xl text-zinc-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto">
               Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers buy. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2 text-slate-100">map your AEO optimization gaps</span> and deploy the infrastructure for AI agents to book your property directly.
             </p>
             
-            {/* Buttons Row - justify-center forced */}
+            {/* Centered Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
                 <span>Claim My Free Strategy Briefing</span>
@@ -247,8 +247,8 @@ const App = () => {
       {/* Strategy Briefing (Gap Analysis) Section */}
       <section id="briefing" className="py-20 lg:py-32 bg-white text-[#020617]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-            <div className="text-center lg:text-left">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center text-center lg:text-left">
+            <div>
               <span className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[10px]">Discovery Call Details</span>
               <h2 className="text-4xl lg:text-6xl font-black leading-[0.95] mt-4 mb-8 uppercase italic tracking-tighter">Your Direct <br className="hidden lg:block" /> Revenue <br className="hidden lg:block" /> Blueprint.</h2>
               <p className="text-slate-600 mb-10 font-light text-base sm:text-lg italic leading-relaxed max-w-xl mx-auto lg:mx-0">
@@ -299,21 +299,21 @@ const App = () => {
       </section>
 
       {/* Success Story */}
-      <section id="success" className="py-20 lg:py-24 bg-[#020617] border-y border-slate-900">
+      <section id="success" className="py-20 lg:py-24 bg-[#020617] border-y border-slate-900 text-center lg:text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
            <div className="order-2 lg:order-1">
               <div className="bg-slate-900/50 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-slate-800 relative shadow-2xl">
-                 <div className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-8">Case Study: Margin Reclaim</div>
-                 <div className="flex items-center space-x-4 mb-8 text-left">
+                 <div className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest inline-block mb-8 leading-none">Case Study: Margin Reclaim</div>
+                 <div className="flex items-center justify-center sm:justify-start space-x-4 mb-8">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-indigo-600 rounded-xl sm:rounded-2xl flex items-center justify-center">
                        <Award className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div>
+                    <div className="text-left">
                        <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase leading-none">Vayalen Boutique Hotel</h3>
-                       <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-bold mt-2 leading-none">Vienna, Austria</p>
+                       <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-bold mt-2 leading-none">AEO Impact Analysis</p>
                     </div>
                  </div>
-                 <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light italic text-left">"By deploying Agentico's strategy, we identified major citation gaps. We reclaimed visibility and bypassed OTA commission cycles for luxury search intents."</p>
+                 <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light italic text-left">"Agentico's strategy identified major citation gaps in our Knowledge Graph. We reclaimed visibility and bypassed OTA commission cycles for luxury search intents."</p>
                  <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
                     <div className="p-4 sm:p-5 bg-slate-800/50 rounded-xl sm:rounded-2xl border border-indigo-500/20">
                        <div className="text-2xl sm:text-3xl font-black text-white leading-none">+40%</div>
@@ -326,7 +326,7 @@ const App = () => {
                  </div>
               </div>
            </div>
-           <div className="order-1 lg:order-2 text-center lg:text-left">
+           <div className="order-1 lg:order-2">
               <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Real-World Proof</span>
               <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-10 leading-tight uppercase italic tracking-tighter">Infrastructure <br className="hidden lg:block" /> Beats <br className="hidden lg:block" /> Marketing.</h2>
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-zinc-200 mx-auto lg:mx-0">
@@ -346,9 +346,9 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8">
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <BarChart3 className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic">Gap Analysis</h3>
-            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
-            <div className="mt-auto flex items-baseline space-x-2">
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">Gap Analysis</h3>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
+            <div className="mt-auto flex items-baseline space-x-2 text-left">
               <span className="text-3xl font-black text-white">$699</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">Fixed Fee</span>
             </div>
@@ -356,15 +356,15 @@ const App = () => {
           <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group">
             <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase shadow-lg tracking-widest">Priority</div>
             <Layers className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight">Entity Anchoring</h3>
-            <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light">Building proprietary Hotel Data Entities for authoritative citation across agentic LLMs.</p>
-            <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg">Custom Quote</div>
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Entity Anchoring</h3>
+            <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light text-left">Building proprietary Hotel Data Entities for authoritative citation across agentic LLMs.</p>
+            <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg text-left">Custom Quote</div>
           </div>
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight">Active Protocol</h3>
-            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
-            <div className="mt-auto flex items-baseline space-x-2">
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Active Protocol</h3>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
+            <div className="mt-auto flex items-baseline space-x-2 text-left">
               <span className="text-3xl font-black text-white">$499</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">/ Month</span>
             </div>
@@ -373,8 +373,8 @@ const App = () => {
       </section>
 
       {/* FINAL POST-PRICING CTA SECTION */}
-      <section className="py-24 sm:py-32 bg-[#020617] relative overflow-hidden border-t border-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <section className="py-24 sm:py-32 bg-[#020617] relative overflow-hidden border-t border-slate-900 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-5 py-2 mb-10">
             <ShieldCheck className="w-4 h-4 text-indigo-400" />
             <span className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-400">Secure Your Asset's Future Authority</span>
@@ -395,7 +395,7 @@ const App = () => {
               <span>Book My Free Strategy Discovery</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </button>
-            <div className="flex items-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
+            <div className="flex items-center justify-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
               <Zap className="w-4 h-4 text-amber-500 animate-pulse" />
               <span>Infrastructure Discovery • Zero Pitch Environment</span>
             </div>
