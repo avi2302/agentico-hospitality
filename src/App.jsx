@@ -200,7 +200,7 @@ const App = () => {
             {/* Centered Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
-                <span>Claim My Free Strategy Briefing</span>
+                <span>Unlock your AI revenue growth potential</span>
                 <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
               <div className="flex flex-col space-y-2 text-center">
@@ -276,18 +276,18 @@ const App = () => {
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
                 <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10 text-white">Protect your <br /><span className="text-indigo-400">future margins.</span></h3>
                 <p className="text-zinc-300 text-sm mb-10 font-light italic relative z-10 leading-relaxed">
-                  During this free 30-minute call, we will determine if your tech stack is AEO-ready and provide a roadmap for reclaiming direct revenue.
+                  During this free 30-minute call, we will check if your tech stack is AEO-ready and explore how AI can help you win more direct booking revenue.
                 </p>
                 <button 
                   onClick={handleBooking}
                   className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 sm:py-6 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-4 shadow-2xl shadow-indigo-500/30 relative z-10 text-xs sm:text-sm active:scale-95"
                 >
                   <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span>Book My Free Strategy Call</span>
+                  <span>Book My Free AI Strategy Call</span>
                 </button>
                 <div className="mt-8 flex items-center justify-center space-x-3 text-[9px] sm:text-[10px] text-zinc-400 uppercase font-black relative z-10 tracking-[0.2em]">
                   <UserCheck className="w-4 h-4 text-indigo-400" />
-                  <span>Only 7 properties per destination</span>
+                  <span>Exclusive for 7 properties per destination</span>
                 </div>
               </div>
             </div>
@@ -409,7 +409,7 @@ const App = () => {
           <Logo className="mb-8" iconOnly />
           <p className="text-zinc-200 text-[10px] uppercase tracking-[0.5em] mb-4">Agentico Travel</p>
           <p className="text-zinc-400 text-[9px] sm:text-[10px] max-w-sm mx-auto font-mono italic opacity-70 leading-loose">
-            Secure Protocol Deployment. © 2026. <br /> All Rights Reserved.
+            Agentico Travel by TravelMedia OÜ. © 2026. <br /> All Rights Reserved.
           </p>
         </div>
       </footer>
