@@ -194,7 +194,7 @@ const App = () => {
             
             {/* Centered Paragraph */}
             <p className="text-base sm:text-lg lg:text-xl text-zinc-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto">
-              Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers search and book. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2 text-slate-100">bridge your AEO optimization gaps</span> and build your AI data entity for AI engines to send travelers directly to your booking engine.
+              Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers search and book. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2 text-slate-100">make your hotel AI ready</span> so AI engines send travelers directly to your online booking engine and save you the OTAs commissions.
             </p>
             
             {/* Centered Buttons */}
