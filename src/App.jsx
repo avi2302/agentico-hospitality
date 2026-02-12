@@ -132,6 +132,7 @@ const Logo = ({ className = "h-8", iconOnly = false }) => (
 const App = () => {
   const calendlyUrl = "https://calendly.com/agentico-hospitality/30min";
   const [isPrefetched, setIsPrefetched] = useState(false);
+  const [currency, setCurrency] = useState('EUR'); // Euro as default
 
   useEffect(() => {
     // 1. Connection Warming
@@ -296,7 +297,8 @@ const App = () => {
       {/* Strategy Briefing (Gap Analysis) Section */}
       <section id="briefing" className="py-20 lg:py-32 bg-white text-[#020617]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          {/* Alignment Updated: items-start and lg:items-start for better baseline matching */}
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
             <div className="text-center lg:text-left">
               <span className="text-indigo-600 font-black uppercase tracking-[0.3em] text-[10px]">Discovery Call Details</span>
               <h2 className="text-4xl lg:text-6xl font-black leading-[0.95] mt-4 mb-8 uppercase italic tracking-tighter">Your Direct <br className="hidden lg:block" /> Revenue <br className="hidden lg:block" /> Blueprint.</h2>
@@ -323,7 +325,8 @@ const App = () => {
               </div>
             </div>
             
-            <div className="relative">
+            {/* Added lg:pt-8 to align the top of the calendar container with the top of the left headline content */}
+            <div className="relative lg:pt-10">
               {/* Calendly Inline Widget Embed */}
               <div className="bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative">
                 <div 
@@ -390,17 +393,52 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 sm:mb-20">
           <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Strategic Solutions</span>
           <h2 className="text-3xl lg:text-5xl font-bold text-white mt-4 tracking-tighter italic uppercase leading-none text-white">The Framework</h2>
+          
+          {/* Currency Toggle */}
+          <div className="mt-10 flex justify-center">
+            <div className="inline-flex p-1 bg-slate-900 border border-slate-800 rounded-xl">
+              <button 
+                onClick={() => setCurrency('EUR')}
+                className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${currency === 'EUR' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+              >
+                EUR (€)
+              </button>
+              <button 
+                onClick={() => setCurrency('USD')}
+                className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${currency === 'USD' ? 'bg-indigo-600 text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+              >
+                USD ($)
+              </button>
+            </div>
+          </div>
         </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 text-left">
-          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
+          <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group relative overflow-hidden">
+            {/* Discount Badge */}
+            <div className="absolute top-4 right-4 bg-lime-400 text-black text-[8px] font-black px-2 py-1 rounded uppercase shadow-lg tracking-widest animate-pulse">
+              Limited Offer
+            </div>
+            
             <BarChart3 className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">Gap Analysis</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
-            <div className="mt-auto flex items-baseline space-x-2">
-              <span className="text-3xl font-black text-white">€799</span>
-              <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">Fixed Fee</span>
+            <div className="mt-auto flex items-baseline flex-wrap">
+              {currency === 'EUR' ? (
+                <>
+                  <span className="line-through text-zinc-500 text-sm sm:text-lg mr-2 font-bold italic">€899</span>
+                  <span className="text-3xl font-black text-white transition-all duration-300">€799</span>
+                </>
+              ) : (
+                <>
+                  <span className="line-through text-zinc-500 text-sm sm:text-lg mr-2 font-bold italic">$950</span>
+                  <span className="text-3xl font-black text-white transition-all duration-300">$859</span>
+                </>
+              )}
+              <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest ml-2">Fixed Fee</span>
             </div>
           </div>
+          
           <div className="bg-indigo-600/5 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-indigo-500/30 relative shadow-2xl flex flex-col group">
             <div className="absolute top-4 right-4 bg-indigo-500 text-white text-[8px] font-black px-2 py-1 rounded uppercase shadow-lg tracking-widest">Priority</div>
             <Layers className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
@@ -408,12 +446,15 @@ const App = () => {
             <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light text-left">Building proprietary Hotel Data Entities for authoritative citation across agentic LLMs.</p>
             <div className="mt-auto font-black text-white uppercase italic tracking-widest text-lg">Custom Quote</div>
           </div>
+          
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Active Protocol</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
             <div className="mt-auto flex items-baseline space-x-2">
-              <span className="text-3xl font-black text-white">€499</span>
+              <span className="text-3xl font-black text-white transition-all duration-300">
+                {currency === 'EUR' ? '€465' : '$499'}
+              </span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">/ Month</span>
             </div>
           </div>
