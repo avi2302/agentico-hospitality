@@ -421,8 +421,8 @@ const App = () => {
             </div>
             
             <BarChart3 className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">Gap Analysis</h3>
-            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">AI Readiness Audit</h3>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying your hotel's structural LLMs optimization gaps and potential search terms for revenue gains from AI engine bookings.</p>
             <div className="mt-auto flex items-baseline flex-wrap">
               {currency === 'EUR' ? (
                 <>
@@ -449,7 +449,7 @@ const App = () => {
           
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Active Protocol</h3>
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">AEO Maintenance</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
             <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white transition-all duration-300">
