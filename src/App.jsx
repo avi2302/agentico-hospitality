@@ -422,7 +422,7 @@ const App = () => {
             
             <BarChart3 className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">AI Readiness Audit</h3>
-            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying your hotel's structural LLMs optimization gaps and potential search terms for revenue gains from AI engine bookings.</p>
+            <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying your hotel's structural LLM optimization gaps and potential search terms for revenue gains from AI engine bookings.</p>
             <div className="mt-auto flex items-baseline flex-wrap">
               {currency === 'EUR' ? (
                 <>
