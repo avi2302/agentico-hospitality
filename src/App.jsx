@@ -397,7 +397,7 @@ const App = () => {
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic text-left">Gap Analysis</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Identifying structural optimization gaps and OTA commission vulnerabilities in your stack.</p>
             <div className="mt-auto flex items-baseline space-x-2">
-              <span className="text-3xl font-black text-white">$699</span>
+              <span className="text-3xl font-black text-white">€799</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">Fixed Fee</span>
             </div>
           </div>
@@ -413,7 +413,7 @@ const App = () => {
             <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">Active Protocol</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
             <div className="mt-auto flex items-baseline space-x-2">
-              <span className="text-3xl font-black text-white">$499</span>
+              <span className="text-3xl font-black text-white">€499</span>
               <span className="text-[10px] text-zinc-400 uppercase font-bold tracking-widest">/ Month</span>
             </div>
           </div>
