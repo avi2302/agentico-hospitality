@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { 
   Database, 
   ChevronRight, 
@@ -133,16 +133,37 @@ const App = () => {
   const calendlyUrl = "https://calendly.com/agentico-hospitality/30min";
 
   useEffect(() => {
-    const link = document.createElement('link');
-    link.href = "https://assets.calendly.com/assets/external/widget.css";
-    link.rel = "stylesheet";
-    document.head.appendChild(link);
+    // 1. Performance Optimization: Preconnect to Calendly domains
+    const preconnects = [
+      { rel: 'preconnect', href: 'https://assets.calendly.com' },
+      { rel: 'preconnect', href: 'https://calendly.com' },
+      { rel: 'dns-prefetch', href: 'https://assets.calendly.com' }
+    ];
+
+    const linkElements = preconnects.map(p => {
+      const link = document.createElement('link');
+      link.rel = p.rel;
+      link.href = p.href;
+      link.crossOrigin = "anonymous";
+      document.head.appendChild(link);
+      return link;
+    });
+
+    // 2. Load Stylesheets
+    const styleLink = document.createElement('link');
+    styleLink.href = "https://assets.calendly.com/assets/external/widget.css";
+    styleLink.rel = "stylesheet";
+    document.head.appendChild(styleLink);
+
+    // 3. Load Script
     const script = document.createElement('script');
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
+
     return () => {
-      if (document.head.contains(link)) document.head.removeChild(link);
+      linkElements.forEach(l => document.head.contains(l) && document.head.removeChild(l));
+      if (document.head.contains(styleLink)) document.head.removeChild(styleLink);
       if (document.body.contains(script)) document.body.removeChild(script);
     };
   }, []);
@@ -171,36 +192,32 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section - FORMATTING UPDATED: Scaled H1 down for professional look */}
+      {/* Hero Section */}
       <section className="relative pt-16 pb-24 lg:pt-32 lg:pb-44 overflow-hidden border-b border-slate-900 text-center">
         <NeuralBackground />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            {/* Centered Badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
                 <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest leading-none">SEO is Legacy. AEO is a must.</span>
               </div>
               <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
-                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider uppercase leading-none">Stop paying 18%+ comissions to OTAs</span>
+                <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider leading-none">Stop paying 18%+ commissions to OTAs</span>
               </div>
             </div>
             
-            {/* Header: Centered and scaled to 5xl (down from 7xl) for professional balance */}
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white mb-8 leading-[1.2] tracking-tight uppercase italic">
               BOOST DIRECT BOOKINGS <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 italic leading-tight">WITH AI ENGINE OPTIMIZATION.</span>
             </h1>
             
-            {/* Centered Paragraph */}
             <p className="text-base sm:text-lg lg:text-xl text-zinc-300 mb-12 leading-relaxed font-light max-w-2xl mx-auto">
               Hotel sales are dominated by legacy OTAs, but AI is disrupting how travelers search and book. We <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8 decoration-2 text-slate-100">make your hotel AI ready</span> so AI engines send travelers directly to your online booking engine and save you the OTAs commissions.
             </p>
             
-            {/* Centered Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
-                <span>Unlock your AI revenue growth potential</span>
+                <span>Unlock your AI revenue potential</span>
                 <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
               </button>
               <div className="flex flex-col space-y-2 text-center">
@@ -218,7 +235,7 @@ const App = () => {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-30"></div>
       </section>
 
-      {/* AGENCY STRENGTHS SECTION */}
+      {/* Agency Strengths Section */}
       <section id="experience" className="py-24 border-y border-slate-900 bg-slate-950/40">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mb-20 text-center mx-auto">
@@ -280,10 +297,10 @@ const App = () => {
                 </p>
                 <button 
                   onClick={handleBooking}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 sm:py-6 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-4 shadow-2xl shadow-indigo-500/30 relative z-10 text-xs sm:text-sm active:scale-95"
+                  className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 sm:py-6 px-6 sm:px-10 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-3 sm:space-x-4 shadow-2xl shadow-indigo-500/30 relative z-10 text-xs sm:text-sm active:scale-95"
                 >
-                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
-                  <span>Book My Free AI Strategy Call</span>
+                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
+                  <span className="text-center">Book My Free AI Strategy Call</span>
                 </button>
                 <div className="mt-8 flex items-center justify-center space-x-3 text-[9px] sm:text-[10px] text-zinc-400 uppercase font-black relative z-10 tracking-[0.2em]">
                   <UserCheck className="w-4 h-4 text-indigo-400" />
@@ -369,7 +386,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* FINAL POST-PRICING CTA SECTION */}
+      {/* Final Call to Action */}
       <section className="py-24 sm:py-32 bg-[#020617] relative overflow-hidden border-t border-slate-900 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center space-x-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-5 py-2 mb-10">
@@ -387,10 +404,10 @@ const App = () => {
           </p>
 
           <div className="flex flex-col items-center gap-6 px-4">
-            <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-8 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
-              <Calendar className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+            <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 sm:space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-6 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
+              <Calendar className="w-6 h-6 shrink-0 group-hover:rotate-12 transition-transform" />
               <span>book my free AI visibility strategy call</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="w-6 h-6 shrink-0 group-hover:translate-x-2 transition-transform" />
             </button>
             <div className="flex items-center justify-center space-x-4 text-zinc-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em]">
               <Zap className="w-4 h-4 text-amber-500 animate-pulse" />
