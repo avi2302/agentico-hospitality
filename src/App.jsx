@@ -8,21 +8,21 @@ import {
   Banknote, 
   Calendar,
   ArrowRight, 
-  BarChart3,
-  Layers,
-  Activity,
-  UserCheck,
+  BarChart3, 
+  Layers, 
+  Activity, 
+  UserCheck, 
   Globe, 
-  Landmark,
-  Compass,
-  Settings,
-  MessageSquareText,
-  Zap,
-  Sparkles,
-  ShieldCheck,
-  SearchCode,
-  LineChart,
-  Target
+  Landmark, 
+  Compass, 
+  Settings, 
+  MessageSquareText, 
+  Zap, 
+  Sparkles, 
+  ShieldCheck, 
+  SearchCode, 
+  LineChart, 
+  Target 
 } from 'lucide-react';
 
 /**
@@ -131,13 +131,13 @@ const Logo = ({ className = "h-8", iconOnly = false }) => (
 
 const App = () => {
   const calendlyUrl = "https://calendly.com/agentico-hospitality/30min";
+  const [isPrefetched, setIsPrefetched] = useState(false);
 
   useEffect(() => {
-    // 1. Performance Optimization: Preconnect to Calendly domains
+    // 1. Connection Warming
     const preconnects = [
       { rel: 'preconnect', href: 'https://assets.calendly.com' },
-      { rel: 'preconnect', href: 'https://calendly.com' },
-      { rel: 'dns-prefetch', href: 'https://assets.calendly.com' }
+      { rel: 'preconnect', href: 'https://calendly.com' }
     ];
 
     const linkElements = preconnects.map(p => {
@@ -149,13 +149,25 @@ const App = () => {
       return link;
     });
 
-    // 2. Load Stylesheets
+    // 2. High Priority Preloading
+    const preloadJs = document.createElement('link');
+    preloadJs.rel = 'preload';
+    preloadJs.as = 'script';
+    preloadJs.href = "https://assets.calendly.com/assets/external/widget.js";
+    document.head.appendChild(preloadJs);
+
+    const preloadCss = document.createElement('link');
+    preloadCss.rel = 'preload';
+    preloadCss.as = 'style';
+    preloadCss.href = "https://assets.calendly.com/assets/external/widget.css";
+    document.head.appendChild(preloadCss);
+
+    // 3. Load actual assets
     const styleLink = document.createElement('link');
     styleLink.href = "https://assets.calendly.com/assets/external/widget.css";
     styleLink.rel = "stylesheet";
     document.head.appendChild(styleLink);
 
-    // 3. Load Script
     const script = document.createElement('script');
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
@@ -163,10 +175,23 @@ const App = () => {
 
     return () => {
       linkElements.forEach(l => document.head.contains(l) && document.head.removeChild(l));
+      if (document.head.contains(preloadJs)) document.head.removeChild(preloadJs);
+      if (document.head.contains(preloadCss)) document.head.removeChild(preloadCss);
       if (document.head.contains(styleLink)) document.head.removeChild(styleLink);
       if (document.body.contains(script)) document.body.removeChild(script);
     };
   }, []);
+
+  // Speculative prefetching of the actual booking URL on hover
+  const handlePrefetch = () => {
+    if (!isPrefetched) {
+      const link = document.createElement('link');
+      link.rel = 'prefetch'; 
+      link.href = calendlyUrl;
+      document.head.appendChild(link);
+      setIsPrefetched(true);
+    }
+  };
 
   const handleBooking = (e) => {
     e.preventDefault();
@@ -185,7 +210,12 @@ const App = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
           <Logo />
           <div className="flex items-center space-x-4 sm:space-x-10">
-            <button onClick={handleBooking} className="bg-indigo-600 text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-bold text-[9px] sm:text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 active:scale-95">
+            <button 
+              onClick={handleBooking} 
+              onMouseEnter={handlePrefetch}
+              onFocus={handlePrefetch}
+              className="bg-indigo-600 text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-bold text-[9px] sm:text-[10px] uppercase tracking-widest hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 active:scale-95"
+            >
               Book free AI strategy call
             </button>
           </div>
@@ -216,9 +246,14 @@ const App = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-              <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-10 py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-sm hover:bg-zinc-200 active:scale-95">
-                <span>Unlock your AI revenue potential</span>
-                <Calendar className="w-5 h-5 group-hover:rotate-12 transition-transform text-indigo-600" />
+              <button 
+                onClick={handleBooking} 
+                onMouseEnter={handlePrefetch}
+                onFocus={handlePrefetch}
+                className="w-full sm:w-auto group flex items-center justify-center space-x-3 sm:space-x-4 bg-white text-black px-6 sm:px-10 py-5 sm:py-6 rounded-2xl font-black uppercase tracking-widest transition-all shadow-2xl shadow-white/5 text-xs sm:text-sm hover:bg-zinc-200 active:scale-95"
+              >
+                <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0 group-hover:rotate-12 transition-transform text-indigo-600" />
+                <span className="text-center">Unlock your AI revenue potential</span>
               </button>
               <div className="flex flex-col space-y-2 text-center">
                 <div className="flex items-center justify-center space-x-2">
@@ -269,7 +304,7 @@ const App = () => {
                 "We don't do sales pitches. We perform a technical check to see if there is an optimization gap and build the strategy of how to proceed."
               </p>
               
-              <div className="grid gap-8 text-left">
+              <div className="grid gap-8 text-left mb-12 lg:mb-0">
                 {[
                   { icon: SearchCode, title: "Optimisation Gap Check", text: "We analyze your current presence to see where AI agents are currently failing to cite your property for direct bookings." },
                   { icon: LineChart, title: "Revenue Mapping", text: "Identifying search intents where you are overpaying 25% commission to OTAs for traffic you should own." },
@@ -289,23 +324,17 @@ const App = () => {
             </div>
             
             <div className="relative">
-              <div className="bg-[#020617] rounded-[2.5rem] sm:rounded-[3.5rem] p-8 sm:p-12 text-white shadow-2xl border border-slate-800 relative overflow-hidden group">
-                <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
-                <h3 className="text-2xl font-black italic uppercase mb-6 leading-tight relative z-10 text-white">Protect your <br /><span className="text-indigo-400">future margins.</span></h3>
-                <p className="text-zinc-300 text-sm mb-10 font-light italic relative z-10 leading-relaxed">
-                  During this free 30-minute call, we will check if your tech stack is AEO-ready and explore how AI can help you win more direct booking revenue.
-                </p>
-                <button 
-                  onClick={handleBooking}
-                  className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-5 sm:py-6 px-6 sm:px-10 rounded-2xl font-black uppercase tracking-widest transition-all flex items-center justify-center space-x-3 sm:space-x-4 shadow-2xl shadow-indigo-500/30 relative z-10 text-xs sm:text-sm active:scale-95"
-                >
-                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 shrink-0" />
-                  <span className="text-center">Book My Free AI Strategy Call</span>
-                </button>
-                <div className="mt-8 flex items-center justify-center space-x-3 text-[9px] sm:text-[10px] text-zinc-400 uppercase font-black relative z-10 tracking-[0.2em]">
-                  <UserCheck className="w-4 h-4 text-indigo-400" />
-                  <span>Exclusive for 7 properties per destination</span>
-                </div>
+              {/* Calendly Inline Widget Embed */}
+              <div className="bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-2xl relative">
+                <div 
+                  className="calendly-inline-widget w-full" 
+                  data-url="https://calendly.com/agentico-hospitality/30min?hide_gdpr_banner=1" 
+                  style={{ minWidth: '320px', height: '700px' }} 
+                />
+              </div>
+              <div className="mt-6 flex items-center justify-center space-x-3 text-[9px] sm:text-[10px] text-zinc-500 uppercase font-black tracking-[0.2em]">
+                <UserCheck className="w-4 h-4 text-indigo-600" />
+                <span>Exclusive for 7 properties per destination</span>
               </div>
             </div>
           </div>
@@ -343,7 +372,12 @@ const App = () => {
            <div className="order-1 lg:order-2">
               <span className="text-indigo-500 font-bold uppercase tracking-[0.3em] text-[10px]">Real-World Proof</span>
               <h2 className="text-4xl lg:text-5xl font-black text-white mt-4 mb-10 leading-tight uppercase italic tracking-tighter text-slate-100">Infrastructure <br /> Beats <br /> Marketing.</h2>
-              <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-zinc-200 mx-auto lg:mx-0">
+              <button 
+                onClick={handleBooking} 
+                onMouseEnter={handlePrefetch}
+                onFocus={handlePrefetch}
+                className="w-full sm:w-auto group flex items-center justify-center space-x-4 bg-white text-black px-8 py-4 rounded-xl transition-all shadow-xl hover:bg-zinc-200 mx-auto lg:mx-0"
+              >
                 <span className="text-xs font-black uppercase tracking-widest text-black italic">Book My Free Strategy Call</span>
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -404,7 +438,12 @@ const App = () => {
           </p>
 
           <div className="flex flex-col items-center gap-6 px-4">
-            <button onClick={handleBooking} className="w-full sm:w-auto group flex items-center justify-center space-x-4 sm:space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-6 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95">
+            <button 
+              onClick={handleBooking} 
+              onMouseEnter={handlePrefetch}
+              onFocus={handlePrefetch}
+              className="w-full sm:w-auto group flex items-center justify-center space-x-4 sm:space-x-6 bg-indigo-600 hover:bg-indigo-500 text-white px-6 sm:px-12 py-5 sm:py-6 rounded-2xl transition-all font-black uppercase tracking-[0.15em] text-xs sm:text-sm shadow-2xl shadow-indigo-500/40 active:scale-95"
+            >
               <Calendar className="w-6 h-6 shrink-0 group-hover:rotate-12 transition-transform" />
               <span>book my free AI visibility strategy call</span>
               <ArrowRight className="w-6 h-6 shrink-0 group-hover:translate-x-2 transition-transform" />
