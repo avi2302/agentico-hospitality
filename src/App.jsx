@@ -230,7 +230,7 @@ const App = () => {
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-wrap justify-center gap-3 mb-10">
               <div className="bg-lime-400/10 border border-lime-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)]">
-                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest leading-none">SEO is Legacy. AEO is a must.</span>
+                <span className="text-[10px] font-black uppercase text-lime-400 italic tracking-widest leading-none">SEO is Legacy. GEO is a must.</span>
               </div>
               <div className="bg-amber-400/10 border border-amber-400/20 rounded-full px-4 py-1.5 shadow-[0_0_20px_-5px_rgba(251,191,36,0.3)]">
                 <span className="text-[10px] font-black uppercase text-amber-400 italic tracking-wider leading-none">Stop paying 18%+ commissions to OTAs</span>
@@ -356,7 +356,7 @@ const App = () => {
                     </div>
                     <div className="text-left">
                        <h3 className="text-xl sm:text-2xl font-black text-white italic uppercase leading-none">Vayalen Boutique Hotel</h3>
-                       <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-bold mt-2 leading-none">AEO Impact Analysis</p>
+                       <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-indigo-400 font-bold mt-2 leading-none">GEO Impact Analysis</p>
                     </div>
                  </div>
                  <p className="text-zinc-200 text-sm leading-relaxed mb-8 font-light italic text-left">"Agentico's strategy identified major citation gaps in our Knowledge Graph. We reclaimed visibility and bypassed OTA commission cycles for luxury search intents."</p>
@@ -449,7 +449,7 @@ const App = () => {
           
           <div className="bg-slate-900/40 p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-slate-800 shadow-2xl flex flex-col group">
             <Activity className="text-indigo-400 w-10 h-10 mb-6 group-hover:scale-110 transition-transform" />
-            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">AEO Maintenance</h3>
+            <h3 className="text-xl font-bold text-white mb-2 uppercase tracking-tighter italic leading-tight text-left">GEO Maintenance</h3>
             <p className="text-zinc-300 text-sm leading-relaxed mb-8 font-light text-left">Ongoing semantic maintenance, hallucination checks, and data entity monitoring.</p>
             <div className="mt-auto flex items-baseline space-x-2">
               <span className="text-3xl font-black text-white transition-all duration-300">
